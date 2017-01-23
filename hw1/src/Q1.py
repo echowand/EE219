@@ -13,6 +13,7 @@ for i in dict:
     network["Day of Week"] = [s.replace(i, dict[i]) for s in network["Day of Week"]]
 network["Day of Week"] = [int(s) for s in network["Day of Week"]]
 
+# plot figure: Size of Backup over Days
 plt.figure()
 for w in workflows:
     networkByWorkflow = network[network["Work-Flow-ID"] == w]
@@ -27,6 +28,7 @@ for w in workflows:
     plt.xlabel("Days")
     plt.ylabel("Size of Backup")
 
+# plot figure: Backup Time over Days
 plt.figure()
 for w in workflows:
     networkByWorkflow = network[network["Work-Flow-ID"] == w]
