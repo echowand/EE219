@@ -1,41 +1,43 @@
+import pandas as pa
 import matplotlib.pyplot as plt
-import numpy
 
+numOfDays = 20
+network = pa.read_csv("../Data/network_backup_dataset.csv", header=0)
+dict = {"Monday": "1", "Tuesday": "2", "Wednesday": "3", "Thursday": "4", "Friday": "5", "Saturday": "6", "Sunday": "7"}
 
-def day_to_number(str):
-    map = {'Monday': 0.0, 'Tuesday': 1.0, 'Wednesday': 2.0, 'Thursday': 3.0, 'Friday': 4.0, 'Saturday': 5.0,
-           'Sunday': 6.0}
-    return map[str]
+workflows = pa.unique(network["Work-Flow-ID"])
+colors = {workflows[0]: "red", workflows[1]: "orange", workflows[2]: "yellow", workflows[3]: "green",
+          workflows[4]: "blue"}
 
+for i in dict:
+    network["Day of Week"] = [s.replace(i, dict[i]) for s in network["Day of Week"]]
+network["Day of Week"] = [int(s) for s in network["Day of Week"]]
 
-def number_from_end_string(str):
-    return [float(s) for s in str.split('_') if s.isdigit()][-1]
+plt.figure()
+for w in workflows:
+    networkByWorkflow = network[network["Work-Flow-ID"] == w]
+    size = [0.0] * (numOfDays + 1)
+    for row in networkByWorkflow.values:
+        day = int(((row[0] - 1) * 7) + row[1])
+        if (day <= numOfDays):
+            size[day] += float(row[5])
 
+    plt.plot(range(len(size)), size, colors[w])
+    plt.title("Size of Backup over Days")
+    plt.xlabel("Days")
+    plt.ylabel("Size of Backup")
 
-file = numpy.genfromtxt('../Data/network_backup_dataset.csv',
-                        delimiter=',', skip_header=1,
-                        converters={1: day_to_number, 3: number_from_end_string, 4: number_from_end_string})
+plt.figure()
+for w in workflows:
+    networkByWorkflow = network[network["Work-Flow-ID"] == w]
+    time = [0.0] * (numOfDays + 1)
+    for row in networkByWorkflow.values:
+        day = int(((row[0] - 1) * 7) + row[1])
+        if (day <= numOfDays):
+            time[day] += float(row[6])
 
-
-plot_data = []
-for i in range(20):
-    plot_data.append([0.0] * 5)
-
-for i in range(3538):
-    row = file[i]
-    plot_data[int(((row[0]-1)*7)+row[1])][int(row[3])] += row[5]
-
-print [x[0] for x in plot_data]
-
-p1 = plt.plot(range(20), [x[0] for x in plot_data])
-p2 = plt.plot(range(20), [x[1] for x in plot_data], 'red')
-p3 = plt.plot(range(20), [x[2] for x in plot_data], 'magenta')
-p4 = plt.plot(range(20), [x[3] for x in plot_data], 'green')
-p5 = plt.plot(range(20), [x[4] for x in plot_data], 'orange')
-plt.xlabel('Days')
-plt.ylabel('Size of file (GB)')
-plt.title('Workflow wise network size.')
-plt.grid(True)
-plt.legend((p1[0], p2[0], p3[0], p4[0], p5[0]), ('work_flow_0', 'work_flow_1', 'work_flow_2', 'work_flow_3', 'work_flow_4'))
-
+    plt.plot(range(len(time)), time, colors[w])
+    plt.title("Backup Time over Days")
+    plt.xlabel("Days")
+    plt.ylabel("Backup Time")
 plt.show()
