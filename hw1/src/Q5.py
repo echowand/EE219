@@ -74,7 +74,6 @@ def lasso_regression(data, target, alphas):
             data_train, data_test = data[train_index], data[test_index]
             target_train, target_test = target[train_index], target[test_index]
             clf.fit(data_train, target_train)
-            #            print(clf.sparse_coef_)
             rmse = sqrt(np.mean((clf.predict(data_test) - target_test) ** 2))
             rmses.append(rmse)
         mean_rmses.append(np.mean(rmses))
