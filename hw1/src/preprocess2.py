@@ -1,8 +1,6 @@
 import numpy as np
 
-
-##transform the origin date into the proper forms
-##the final result is in prepossessed
+#preprocess data
 def preprocess_2(data):
     rowNO = len(data)
     indices = data[:, 8:9]
@@ -18,10 +16,5 @@ def preprocess_2(data):
     preprocessed = np.concatenate((data[:, 0:8], bindices, data[:, 9:13]), axis=1)
     return preprocessed
 
-# print(lr.coef_)
-# print target.max()
-# plt.scatter(target, lr.predict(data))
-# plt.plot([0, 1],[0, 1], 'k--', lw = 4)
-# plt.show()
 
 

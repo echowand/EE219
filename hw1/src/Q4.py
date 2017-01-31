@@ -25,9 +25,6 @@ def linear_regression(data, target):
         rmse_linear = sqrt(np.mean((lr.predict(data_test) - target_test) ** 2))
         RMSE_LINEAR.append(rmse_linear)
 
-    # scores = cross_validation.cross_val_score(rfr,data_test, target_test.ravel, cv=10)
-    # print np.mean(scores)
-
     F, pval = f_regression(data_test, lr.predict(data_test))
     print(pval)
 
@@ -98,15 +95,6 @@ def polynomial_regression():
     plt.show()
     plt.savefig('problem4-2')
 
-
-    # predicted = cross_val_predict(lr, Train_set_x, Train_set_y, cv=10)
-    #
-    # fig, ax = plt.subplots()
-    # ax.scatter(Train_set_y, predicted)
-    # ax.plot([Train_set_y.min(), Train_set_y.max()], [Train_set_y.min(), Train_set_y.max()], 'k--', lw=4)
-    # ax.set_xlabel('Measured')
-    # ax.set_ylabel('Predicted')
-    # plt.show()
 
 def main():
     data = pa.read_csv("./housing_data.csv", header=None).values[:, :]

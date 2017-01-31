@@ -2,7 +2,7 @@ from math import sqrt
 import numpy as np
 import pandas as pa
 import matplotlib.pyplot as plt
-from sklearn import linear_model
+from sklearn import linear_model, cross_validation
 from sklearn.cross_validation import KFold
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.feature_selection import f_regression
@@ -30,11 +30,8 @@ def linear_and_random_forest_regression(data, target, network):
         rmse_rfr = sqrt(np.mean((rfr.predict(data_test) - target_test) ** 2))
         RMSE_RFR.append(rmse_rfr)
 
-    # scores = cross_validation.cross_val_score(rfr,data_test, target_test.ravel, cv=10)
-    # print np.mean(scores)
-
     F, pval = f_regression(data_test, lr.predict(data_test))
-    # print(np.mean(RMSE_RFR))
+    print(np.mean(RMSE_RFR))
     print(pval)
     test_times = np.arange(1, 11)
     plt.figure()
@@ -116,7 +113,7 @@ def random_forest_tuning_parameters(data, target, network):
 
 
 # Fit the data with neural network
-def neural_network(data, target, network):
+def neural_network(data, target):
     DS = SupervisedDataSet(len(data[0]), 1)
     nn = buildNetwork(len(data[0]), 7, 1, bias=True)
     kf = KFold(len(target), 10, shuffle=True);
@@ -144,28 +141,6 @@ def neural_network(data, target, network):
     plt.show()
     print(np.mean(RMSE_NN))
 
-
-def neural_network_converg(data, target, network):
-    DS = SupervisedDataSet(len(data[0]), 1)
-    nn = buildNetwork(len(data[0]), 7, 1, bias=True, hiddenclass=SigmoidLayer, outclass=LinearLayer)
-    for d, t in zip(data, target):
-        DS.addSample(d, t)
-    Train, Test = DS.splitWithProportion(0.9)
-    # data_train = Train['input']
-    data_test = Test['input']
-    # target_train = Train['target']
-    target_test = Test['target']
-    bpTrain = BackpropTrainer(nn, Train, verbose=True)
-    # bpTrain.train()
-    bpTrain.trainUntilConvergence(maxEpochs=10)
-    p = []
-    for d_test in data_test:
-        p.append(nn.activate(d_test))
-
-    rmse_nn = sqrt(np.mean((p - target_test) ** 2))
-    print(rmse_nn)
-
-
 def main():
     network = pa.read_csv("./network_backup_dataset.csv", header=0)
     dict = {"Monday": "1", "Tuesday": "2", "Wednesday": "3", "Thursday": "4", "Friday": "5", "Saturday": "6",
@@ -189,11 +164,11 @@ def main():
 
 
     ### Tuning the parameters of the random forest
-    # random_forest_tuning_parameters(data, target, network)
+    #random_forest_tuning_parameters(data, target, network)
 
 
     ### use the neural network model to fit the data
-    # neural_network(data, target, network)
+    neural_network(data, target)
 
 
 if __name__ == "__main__":
