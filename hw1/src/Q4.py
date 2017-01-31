@@ -109,14 +109,14 @@ def polynomial_regression():
     # plt.show()
 
 def main():
-    data = pa.read_csv("../Data/housing_data.csv", header=None).values[:, :]
+    data = pa.read_csv("./housing_data.csv", header=None).values[:, :]
     binaryData = preprocess_2(data)
     target = data[:, 13]
-    #rmse_linear = linear_regression(binaryData, target)
+    rmse_linear = linear_regression(binaryData, target)
     #rmse_l1CV=lassoCV_regression(binaryData,target)
     #print("Mean RMSE of linear regression=" + str(np.mean(rmse_linear)))
     # print(np.mean(rmse_l1CV))
-    polynomial_regression()
+    #polynomial_regression()
 
 
 if __name__ == "__main__":

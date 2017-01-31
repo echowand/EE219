@@ -7,7 +7,7 @@ from sklearn.cross_validation import KFold
 from sklearn import linear_model
 
 # import the csv file
-df = pd.read_csv('../Data/network_backup_dataset.csv', header=0, index_col=None)
+df = pd.read_csv('./network_backup_dataset.csv', header=0, index_col=None)
 
 # preparing the data
 dict = {"Monday": "1", "Tuesday": "2", "Wednesday": "3", "Thursday": "4", "Friday": "5", "Saturday": "6", "Sunday": "7"}

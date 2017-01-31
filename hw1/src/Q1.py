@@ -2,7 +2,7 @@ import pandas as pa
 import matplotlib.pyplot as plt
 
 numOfDays = 20
-network = pa.read_csv("../Data/network_backup_dataset.csv", header=0)
+network = pa.read_csv("./network_backup_dataset.csv", header=0)
 dict = {"Monday": "1", "Tuesday": "2", "Wednesday": "3", "Thursday": "4", "Friday": "5", "Saturday": "6", "Sunday": "7"}
 
 workflows = pa.unique(network["Work-Flow-ID"])

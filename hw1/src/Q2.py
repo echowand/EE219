@@ -13,58 +13,6 @@ from pybrain.tools.shortcuts import buildNetwork
 from pybrain.supervised.trainers import BackpropTrainer
 
 
-# Binary the data that has no numerical meaning
-def preprocessed_1(network):
-    target_forgot = network.values[:, 6:7]
-    rowNO = len(network)
-    ##transform the origin date into the proper forms
-    ##the final result is in prepossessed
-    ##meaning of its columns
-    ##0:15 week #
-    ##15:22 weekdays
-    ##22:28 startTime
-    ##28:33 workflow
-    ##33:63 fileName
-    ##63:64 Backup Time(hour)
-    weeks = network.values[:, 0:1]
-    bweeks = np.zeros((rowNO, 15))
-    i = 0
-    for tmp in np.nditer(weeks):
-        bweeks[i, int(tmp) - 1] = 1
-        i += 1
-
-    weekdays = network.values[:, 1:2]
-    bweekdays = np.zeros((rowNO, 7))
-    i = 0
-    for tmp in np.nditer(weekdays):
-        bweekdays[i, int(tmp) - 1] = 1
-        i += 1
-
-    startTimes = network.values[:, 2:3]
-    bstartTimes = np.zeros((rowNO, 6))
-    i = 0
-    for tmp in np.nditer(startTimes):
-        bstartTimes[i, int(tmp) / 4] = 1
-        i += 1
-
-    workflows = network.values[:, 3:4]
-    bworkflows = np.zeros((rowNO, 5))
-    i = 0
-    for tmp in np.nditer(workflows):
-        bworkflows[i, int(tmp)] = 1
-        i += 1
-
-    fileNames = network.values[:, 4:5]
-    bfileNames = np.zeros((rowNO, 30))
-    i = 0
-    for tmp in np.nditer(fileNames):
-        bfileNames[i, int(tmp)] = 1
-        i += 1
-
-    preprocessed = np.concatenate((bweeks, bweekdays, bstartTimes, bworkflows, bfileNames, target_forgot), axis=1)
-    return preprocessed
-
-
 # Compare the linear regression model and random forest regression model
 def linear_and_random_forest_regression(data, target, network):
     lr = linear_model.LinearRegression(normalize=True)
@@ -86,7 +34,7 @@ def linear_and_random_forest_regression(data, target, network):
     # print np.mean(scores)
 
     F, pval = f_regression(data_test, lr.predict(data_test))
-    #print(np.mean(RMSE_RFR))
+    # print(np.mean(RMSE_RFR))
     print(pval)
     test_times = np.arange(1, 11)
     plt.figure()
@@ -219,7 +167,7 @@ def neural_network_converg(data, target, network):
 
 
 def main():
-    network = pa.read_csv("../Data/network_backup_dataset.csv", header=0)
+    network = pa.read_csv("./network_backup_dataset.csv", header=0)
     dict = {"Monday": "1", "Tuesday": "2", "Wednesday": "3", "Thursday": "4", "Friday": "5", "Saturday": "6",
             "Sunday": "7"}
     for i in dict:
@@ -235,19 +183,17 @@ def main():
     data2 = network.values[:, 6:7]
     data = np.concatenate((data1, data2), axis=1)
     target = network.values[:, 5]
-    ### if you want to make the data into binary format, uncomment the line below
-    #data = preprocessed_1(network)
 
     ### compare the linear model with the random forest model
-    #linear_and_random_forest_regression(data, target, network)
+    linear_and_random_forest_regression(data, target, network)
 
 
     ### Tuning the parameters of the random forest
-    #random_forest_tuning_parameters(data, target, network)
+    # random_forest_tuning_parameters(data, target, network)
 
 
     ### use the neural network model to fit the data
-    #neural_network(data, target, network)
+    # neural_network(data, target, network)
 
 
 if __name__ == "__main__":
