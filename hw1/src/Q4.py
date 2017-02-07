@@ -31,8 +31,6 @@ def linear_regression(data, target):
     test_times = np.arange(1, 11)
     plt.figure()
     plt.plot(test_times, RMSE_LINEAR, label="RMSE in linear regression with 10-fold cv")
-    #    plt.ylim(0.0, 0.12)
-    # plt.title("RMSE comparison between linear regression and random forest regression")
     plt.xlabel("cross validation times")
     plt.ylabel("RMSE")
     plt.legend()
@@ -52,7 +50,6 @@ def linear_regression(data, target):
     plt.xlabel("fitted values")
     plt.ylabel("residual")
     plt.legend()
-    #    plt.ylim(-0.8,0.4)
     plt.show()
     return RMSE_LINEAR
 
@@ -60,18 +57,15 @@ def linear_regression(data, target):
 def polynomial_regression():
     boston = datasets.load_boston()
 
-    # linear-regression
+    # linear regression
     lr = linear_model.LinearRegression()
 
     test_times = range(0, 10)
 
     plt.figure(1)
-    # divide the data into two sets
     Train_set_x = pd.DataFrame(boston.data, index=None)
     Train_set_y = pd.DataFrame(boston.target, index=None)
-    # split the data into 10 folds
     f10 = KFold(len(Train_set_x), n_folds=10, shuffle=True, random_state=None)
-    # result1 linear,result2 poly-2,result3 poly-3,result4 poly-4,result5 poly-5,result6 poly-6,result7 poly-7
 
     for i in range(1, 8):
         results = []
@@ -101,10 +95,10 @@ def main():
     binaryData = preprocess_2(data)
     target = data[:, 13]
     rmse_linear = linear_regression(binaryData, target)
-    #rmse_l1CV=lassoCV_regression(binaryData,target)
-    #print("Mean RMSE of linear regression=" + str(np.mean(rmse_linear)))
+    # rmse_l1CV=lassoCV_regression(binaryData,target)
+    # print("Mean RMSE of linear regression=" + str(np.mean(rmse_linear)))
     # print(np.mean(rmse_l1CV))
-    #polynomial_regression()
+    # polynomial_regression()
 
 
 if __name__ == "__main__":

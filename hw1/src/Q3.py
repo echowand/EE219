@@ -46,14 +46,11 @@ for i in range(0, 5):
         results.append(error)
     plt.plot(test_times, results, label=('RMSE of Linear Regression-Workflow' + str(i)))
 
-
-
 # divide the data into two sets
 Train_set_x = df.drop('Size of Backup (GB)', 1)
 Train_set_y = df.ix[:, 'Size of Backup (GB)']
 # split the data into 10 folds
 f10 = KFold(len(Train_set_x), n_folds=10, shuffle=True, random_state=None)
-# result1 linear,result2 poly-2,result3 poly-3,result4 poly-4,result5 poly-5,result6 poly-6,result7 poly-7
 results1 = []
 results2 = []
 results3 = []

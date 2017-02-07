@@ -7,7 +7,6 @@ from sklearn.cross_validation import KFold
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.feature_selection import f_regression
 
-from pybrain import *
 from pybrain.datasets import SupervisedDataSet
 from pybrain.tools.shortcuts import buildNetwork
 from pybrain.supervised.trainers import BackpropTrainer
@@ -141,6 +140,7 @@ def neural_network(data, target):
     plt.show()
     print(np.mean(RMSE_NN))
 
+
 def main():
     network = pa.read_csv("./network_backup_dataset.csv", header=0)
     dict = {"Monday": "1", "Tuesday": "2", "Wednesday": "3", "Thursday": "4", "Friday": "5", "Saturday": "6",
@@ -159,15 +159,13 @@ def main():
     data = np.concatenate((data1, data2), axis=1)
     target = network.values[:, 5]
 
-    ### compare the linear model with the random forest model
+    # linear and random forest model
     linear_and_random_forest_regression(data, target, network)
 
+    # tuning the parameters of the random forest
+    random_forest_tuning_parameters(data, target, network)
 
-    ### Tuning the parameters of the random forest
-    #random_forest_tuning_parameters(data, target, network)
-
-
-    ### use the neural network model to fit the data
+    # neural network
     neural_network(data, target)
 
 
