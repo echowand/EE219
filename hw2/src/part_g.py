@@ -71,7 +71,7 @@ def Gaussian(svm_train_data, svm_train_tag, svm_test_data, svm_test_tag):
     gnb_auc = auc(gnb_fpr, gnb_tpr)
     plt.figure()
     plt.plot(gnb_fpr, gnb_tpr, lw = 1)
-    plt.title("ROC of Naive Bayes")
+    plt.title("ROC of Gaussian")
     plt.show()
     print "GaussianNB"
     print "confusion matrix:","\n",confusion_matrix(svm_test_tag, gnb_predict)
@@ -93,7 +93,7 @@ def Bernoulli(svm_train_data, svm_train_tag, svm_test_data, svm_test_tag):
         bnb_auc = auc(bnb_fpr, bnb_tpr)
         plt.figure()
         plt.plot(bnb_fpr, bnb_tpr, lw = 1)
-        plt.title("ROC of Naive Bayes")
+        plt.title("ROC of Bernoulli")
         plt.show()
 
         score=bnb.score(svm_test_data,svm_test_tag)
@@ -104,3 +104,6 @@ def Bernoulli(svm_train_data, svm_train_tag, svm_test_data, svm_test_tag):
         print "recall=",recall[1]
         print "auc=",bnb_auc
         print "\n"
+
+
+G()

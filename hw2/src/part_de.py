@@ -16,13 +16,12 @@ class StemmedTfidfVectorizer(TfidfVectorizer):
         return lambda doc: (english_stemmer.stem(w) for w in analyzer(doc))
 
 
-cat = ['comp.graphics', 'comp.os.ms-windows.misc', 'comp.sys.ibm.pc.hardware', 'comp.sys.mac.hardware',
+categories = ['comp.graphics', 'comp.os.ms-windows.misc', 'comp.sys.ibm.pc.hardware', 'comp.sys.mac.hardware',
        'rec.autos', 'rec.motorcycles', 'rec.sport.baseball', 'rec.sport.hockey']
-train = f20(subset='train', categories=cat, shuffle=True, random_state=42)
+train = f20(subset='train', categories=categories, shuffle=True, random_state=42)
 
 stopwords = text.ENGLISH_STOP_WORDS
-vectorizer = StemmedTfidfVectorizer(
-    min_df=1, stop_words=stopwords, decode_error='ignore')
+vectorizer = StemmedTfidfVectorizer(min_df=1, stop_words=stopwords, decode_error='ignore')
 vector_train = vectorizer.fit_transform(train.data)
 tfidf_train = vector_train.toarray()
 svd = TSVD(n_components=50, n_iter=10, random_state=42)
@@ -40,7 +39,7 @@ svm_train_tag = np.array(svm_train_tag)
 svm_classfier = SVC(C=1000)
 svm_classfier.fit(svm_train_data, svm_train_tag)
 
-test = f20(subset='test', categories=cat, shuffle=True, random_state=42)
+test = f20(subset='test', categories=categories, shuffle=True, random_state=42)
 vector_test = vectorizer.transform(test.data)
 tfidf_test = vector_test.toarray()
 tfidf_test_reduced = svd.transform(tfidf_test)

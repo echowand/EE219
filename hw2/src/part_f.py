@@ -97,3 +97,5 @@ def print_stats():
 
     print "precision = ", precision
     print "recall = ", recall
+
+F()

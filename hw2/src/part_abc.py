@@ -103,13 +103,14 @@ def C():
     # get the most 10 significent terms in the 4 classes
     tficf = tf * icf
     top_n = 10
+    features = vectorizer.get_feature_names()
     for i in range(0, 4):
         print categories[i]
         indices = np.argsort(tficf[i])[::-1]
-        features = vectorizer.get_feature_names()
         top_features = [features[i] for i in indices[:top_n]]
         print top_features
 
 
+C()
 
 
