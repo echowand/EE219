@@ -95,3 +95,5 @@ def print_stats(bestC, data_train, tag_train, data_test, tag_test):
 
     print "precision = ", precision
     print "recall = ", recall
+
+F()
