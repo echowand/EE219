@@ -71,7 +71,7 @@ def L1(svm_train_data, svm_train_tag, svm_test_data, svm_test_tag):
     lr1_auc = auc(lr1_fpr, lr1_tpr)
     plt.figure()
     plt.plot(lr1_fpr, lr1_tpr, lw = 1)
-    plt.title("ROC of Naive Logistic Regression")
+    plt.title("ROC of Naive Logistic Regression with L1 Regularization")
     plt.show()
     print "LR1"
     print "confusion matrix:","\n",confusion_matrix(svm_test_tag, lr1_predict)
@@ -93,7 +93,7 @@ def L2(svm_train_data, svm_train_tag, svm_test_data, svm_test_tag):
     lr2_auc = auc(lr2_fpr, lr2_tpr)
     plt.figure()
     plt.plot(lr2_fpr, lr2_tpr, lw = 1)
-    plt.title("ROC of Naive Logistic Regression")
+    plt.title("ROC of Naive Logistic Regression with L2 Regularization")
     plt.show()
     print "LR2"
     print "confusion matrix:","\n",confusion_matrix(svm_test_tag, lr2_predict)

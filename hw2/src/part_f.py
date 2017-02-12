@@ -1,3 +1,4 @@
+from sklearn.feature_extraction.text import TfidfVectorizer
 import numpy as np
 from sklearn.datasets import fetch_20newsgroups as f20
 from sklearn.feature_extraction import text
@@ -9,6 +10,7 @@ from sklearn.metrics import confusion_matrix, precision_score, recall_score
 from sklearn.cross_validation import KFold
 
 english_stemmer = nltk.stem.SnowballStemmer('english')
+
 
 class StemmedTfidfVectorizer(TfidfVectorizer):
     def build_analyzer(self):
@@ -76,9 +78,9 @@ def F():
             bestScore = score / 5
             bestC = c
 
-    print_stats(bestC, data_train, tag_train, data_test, tag_test)
+    print_stats(bestC, data_train, tag_train, data_test, tag)
 
-def print_stats(bestC, data_train, tag_train, data_test, tag_test):
+def print_stats():
     print "the best c = ", bestC
     svm_classfier = SVC(C=bestC)
     svm_classfier.fit(data_train, tag_train)
