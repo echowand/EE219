@@ -80,7 +80,7 @@ def F():
 
     print_stats(bestC, data_train, tag_train, data_test, tag)
 
-def print_stats():
+def print_stats(bestC, data_train, tag_train, data_test, tag_test):
     print "the best c = ", bestC
     svm_classfier = SVC(C=bestC)
     svm_classfier.fit(data_train, tag_train)
