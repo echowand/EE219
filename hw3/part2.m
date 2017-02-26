@@ -8,7 +8,7 @@ rating = data(:, 3);
 
 obervation=[userId,itemId,rating];
 indices = crossvalind('Kfold',100000,10);
-iteration=[10,20,30,40,50,60];
+iteration=[50,100,200,500,1000,2000];
 for i=1:1:6
     error=zeros(1,10);
     option.iter=iteration(i);
