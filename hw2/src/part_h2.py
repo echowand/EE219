@@ -97,3 +97,5 @@ def plot(fpr_hard, tpr_hard, fpr_soft, tpr_soft, bnb_fpr, bnb_tpr, gnb_fpr, gnb_
     plt.legend(loc='lower right')
     plt.title("ROC curve")
     plt.show()
+
+H2()

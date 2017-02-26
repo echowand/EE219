@@ -102,3 +102,6 @@ def L2(svm_train_data, svm_train_tag, svm_test_data, svm_test_tag):
     print "recall=",recall[1]
     print "auc=",lr2_auc
     print "\n"
+
+
+H1()

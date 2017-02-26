@@ -109,3 +109,6 @@ def Bernoulli(svm_train_data, svm_train_tag, svm_test_data, svm_test_tag):
     print "precision=", precision
     print "recall=", recall
     print '\n'
+
+
+I()
