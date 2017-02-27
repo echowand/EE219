@@ -80,7 +80,7 @@ def plot_ROC(predicted, actual, k, alpha):
     plt.title('ROC Curve k={0} lambda={1}'.format(k ,alpha))
     plt.scatter(precision, recall, s=60, marker='o')
     plt.plot(precision,recall)
-    plt.savefig("plots/ROC curve k="+str(k)+"lambda="+str(alpha)+".png",format='png')
+    plt.savefig("pics/ROC_curve_k="+str(k)+"_lambda="+str(alpha)+".png",format='png')
     plt.clf()
     
 if __name__ == "__main__":
