@@ -78,7 +78,7 @@ def F():
             bestScore = score / 5
             bestC = c
 
-    print_stats(bestC, data_train, tag_train, data_test, tag)
+    print_stats(bestC, data_train, tag_train, data_test, tag_test)
 
 def print_stats(bestC, data_train, tag_train, data_test, tag_test):
     print "the best c = ", bestC
@@ -97,5 +97,3 @@ def print_stats(bestC, data_train, tag_train, data_test, tag_test):
 
     print "precision = ", precision
     print "recall = ", recall
-
-F()
