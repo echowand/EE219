@@ -21,13 +21,11 @@ def squared_error(R, W, U, V):
 
 
 # default iteration = 100
-def matrix_factorize(R, W, k, reg_param=0, num_iterations=100):
+def matrix_factorization(R, W, k, reg_param=0, num_iterations=100):
     eps = 1e-5
-
     m, n = R.shape
     U = np.maximum(eps, 5 * np.random.rand(m, k))
     V = np.maximum(eps, linalg.lstsq(U, R)[0])
-
     WR = W * R
 
     for i in range(num_iterations):
@@ -88,10 +86,10 @@ if __name__ == "__main__":
 
     for k in klist:
         print "k = " + str(k) + ", iteration = 200"
-        U, V = matrix_factorize(W, R, k, reg_param=0, num_iterations=200)
+        U, V = matrix_factorization(W, R, k, reg_param=0, num_iterations=200)
 
     for k in klist:
         for l in lambdalist:
             print "k = " + str(k) + ", lambda = " + str(l)
-            U, V = matrix_factorize(R, W, k, reg_param=l)
+            U, V = matrix_factorization(R, W, k, reg_param=l)
             draw_ROC(np.dot(U, V), R, k, l)
