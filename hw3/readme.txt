@@ -23,6 +23,6 @@ hitFalseAlarm.m: calculates hit rate and false alarm rate
 
 part1.m: problem 1
 part2.m: problem 2
-
-
+part3.m: problem 3
+part4.m: problem 4
 part5.m: problem 5
