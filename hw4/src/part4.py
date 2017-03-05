@@ -7,6 +7,10 @@ from sklearn import metrics
 from nltk import SnowballStemmer
 from nltk.tokenize import RegexpTokenizer
 from sklearn.cluster import KMeans
+import numpy as np
+from sklearn.preprocessing import Normalizer
+from sklearn.pipeline import make_pipeline
+from sklearn.decomposition import TruncatedSVD
 
 # Get stop words
 def get_stop_words():
@@ -15,7 +19,7 @@ def get_stop_words():
         lists = file.readlines()
 
     for i in range(len(lists)):
-        lists[i] = lists[i].rstrip()
+        lists[i] = lists[i].rstrip()  # remove trailing spaces
 
     NLTK_stop_words = lists
 
@@ -68,52 +72,17 @@ def load_data():
     data, X_tfidf, X_counts, count_vectorizer = TFIDF(categories, 'all', stop_words, NLTK_stop_words)
     return data, X_tfidf
 
-# Label data
-def label_data(Y_data):
-    labels = []
-    for y in Y_data:
-        labels.append(0 if (y <= 3) else 1)
-    return labels
-
-# Benchmark K means
-def k_means(estimator, name, data, labels):
-    estimator.fit(data)
-    print('% 9s   %.3f   %.3f   %.3f   %.3f'
-          % (name,
-             metrics.homogeneity_score(labels, estimator.labels_),
-             metrics.completeness_score(labels, estimator.labels_),
-             metrics.adjusted_rand_score(labels, estimator.labels_),
-             metrics.adjusted_mutual_info_score(labels, estimator.labels_),
-             ))
-
-def p2():
+def d():
     data, X_tfidf = load_data()
-    number_of_samples, number_of_features = X_tfidf.shape
-    number_of_digits = 2
-    labels = label_data(data.target)
-    print("no.digits: %d, \t no.samples %d, \t no.features %d"
-	      % (number_of_digits, number_of_samples, number_of_features))
-    print('% 9s' % 'init'
-                   '        homogeneity    completeness     ARS    AMI')
-    k_means(KMeans(init='k-means++', n_clusters=number_of_digits,
-                         n_init=10, max_iter=200, random_state=42, tol=1e-5),
-                  name="k-means++", data=X_tfidf, labels=labels)
 
-    k_means(KMeans(init='random', n_clusters=number_of_digits,
-                         n_init=10, max_iter=200, random_state=42, tol=1e-5),
-                  name="random", data=X_tfidf, labels=labels)
+    number_of_components = 50
+    number_of_iterations = 200
+    np.random.seed(304145309)
 
-    print(100 * '_')
+    svd = TruncatedSVD(n_components=number_of_components, n_iter=number_of_iterations)
+    normalizer_pca = Normalizer(copy=False)
+    lsa_pca = make_pipeline(svd, normalizer_pca)
+    X_tfidf_pca = lsa_pca.fit_transform(X_tfidf)
+    print(X_tfidf_pca.shape)
 
-p2()
-
-# ____________________________________________________________________________________________________
-# TFIDF Matrix Created
-# Final number of terms:  67764
-# Final number of documents:  7882
-# ____________________________________________________________________________________________________
-# no.digits: 2, 	 no.samples 7882, 	 no.features 67764
-# init        homogeneity    completeness     ARS    AMI
-# k-means++   0.421   0.455   0.440   0.421
-#    random   0.438   0.469   0.462   0.438
-# ____________________________________________________________________________________________________
+d()
