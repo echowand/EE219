@@ -11,7 +11,7 @@ from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 
 class Tokenizer(object):
     def __init__(self):
-        self.tok = RegexpTokenizer(r'\b([a-zA-Z]+)\b')
+        self.tok = RegexpTokenizer(r'\w+')
         self.stemmer = LancasterStemmer()
 
     def __call__(self, doc):
