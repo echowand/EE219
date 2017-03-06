@@ -1,5 +1,5 @@
 from __future__ import print_function
-from sklearn.datasets import fetch_20newsgroups
+from sklearn.datasets import fetch_20newsgroups as f20
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfTransformer
 from sklearn.feature_extraction import text
@@ -36,28 +36,26 @@ def preprocess(sentence, stop_words, NLTK_stop_words):
 # Calculate TFIDF
 def TFIDF(categories, train_test, stop_words, NLTK_stop_words):
     # Get the data
-    twenty_data = fetch_20newsgroups(subset=train_test,categories=categories, remove=('headers','footers','quotes'))
+    all_data = f20(subset=train_test,categories=categories, remove=('headers','footers','quotes'))
     # Save size of the data
-    size, = twenty_data.filenames.shape
+    size, = all_data.filenames.shape
     # Preprocess all documents
     for item in range(0, size):
-        sentence = twenty_data.data[item]
-        twenty_data.data[item] = preprocess(sentence, stop_words, NLTK_stop_words)
+        sentence = all_data.data[item]
+        all_data.data[item] = preprocess(sentence, stop_words, NLTK_stop_words)
 
     # Transfer processed data to a TDM
     count_vectorizer = CountVectorizer()
-    X_train_number = count_vectorizer.fit_transform(twenty_data.data)
+    X_train_number = count_vectorizer.fit_transform(all_data.data)
 
     # Calculate TFIDF for every term in the document
     tf_transformer = TfidfTransformer(use_idf=True).fit(X_train_number)
     X_train_tfidf = tf_transformer.transform(X_train_number)
     docs, terms = X_train_tfidf.shape
-    print(100 * '_')
-    print("TFIDF Matrix Created")
-    print("Final number of terms: ", terms)
-    print("Final number of documents: ", docs)
-    print(100 * '_')
-    return twenty_data, X_train_tfidf, X_train_number, count_vectorizer
+    print("TFIDF")
+    print("Number of terms: ", terms)
+    print("Number of documents: ", docs)
+    return all_data, X_train_tfidf, X_train_number, count_vectorizer
 
 # Load data
 def load_data():
@@ -76,10 +74,10 @@ def label_data(Y_data):
     return labels
 
 # Benchmark K means
-def k_means(estimator, name, data, labels):
+def print_k_means(estimator, init_name, data, labels):
     estimator.fit(data)
-    print('% 9s   %.3f   %.3f   %.3f   %.3f'
-          % (name,
+    print('% 9s   %.4f   %.4f   %.4f   %.4f'
+          % (init_name,
              metrics.homogeneity_score(labels, estimator.labels_),
              metrics.completeness_score(labels, estimator.labels_),
              metrics.adjusted_rand_score(labels, estimator.labels_),
@@ -91,19 +89,19 @@ def p2():
     number_of_samples, number_of_features = X_tfidf.shape
     number_of_digits = 2
     labels = label_data(data.target)
+
     print("no.digits: %d, \t no.samples %d, \t no.features %d"
 	      % (number_of_digits, number_of_samples, number_of_features))
     print('% 9s' % 'init'
                    '        homogeneity    completeness     ARS    AMI')
-    k_means(KMeans(init='k-means++', n_clusters=number_of_digits,
+    print_k_means(KMeans(init='k-means++', n_clusters=number_of_digits,
                          n_init=10, max_iter=200, random_state=42, tol=1e-5),
-                  name="k-means++", data=X_tfidf, labels=labels)
+                  init_name="k-means++", data=X_tfidf, labels=labels)
 
-    k_means(KMeans(init='random', n_clusters=number_of_digits,
+    print_k_means(KMeans(init='random', n_clusters=number_of_digits,
                          n_init=10, max_iter=200, random_state=42, tol=1e-5),
-                  name="random", data=X_tfidf, labels=labels)
+                  init_name="random", data=X_tfidf, labels=labels)
 
-    print(100 * '_')
 
 p2()
 

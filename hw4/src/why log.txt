@@ -1,0 +1,6 @@
+part a: take a screen shot of the ground truth table matrix. circle out big values
+
+
+part c: why take log? 
+e.g. 505, 500 is no big different but 5, 500 is a big difference. Taking log will emphasize the difference
+zipf's law
