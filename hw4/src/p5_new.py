@@ -15,6 +15,8 @@ def mySVD(X):
     completeness = []
     vmeasure = []
     ari = []
+    ami = []
+
     for dimensionality in np.array(n_components):
         print("Desired dimensionality: %d" % dimensionality)
 
@@ -31,6 +33,7 @@ def mySVD(X):
         completeness.append(metrics.completeness_score(labels, kmLSI.labels_))
         vmeasure.append(metrics.v_measure_score(labels, kmLSI.labels_))
         ari.append(metrics.adjusted_rand_score(labels, kmLSI.labels_))
+        ami.append(metrics.adjusted_mutual_info_score(labels, kmLSI.labels_))
 
         print("Homogeneity: %0.3f" % metrics.homogeneity_score(labels, kmLSI.labels_))
         print("Completeness: %0.3f" % metrics.completeness_score(labels, kmLSI.labels_))
@@ -44,7 +47,8 @@ def mySVD(X):
     l2, = plt.plot(n_components, completeness, label='completeness')
     l3, = plt.plot(n_components, vmeasure, label='vmeasure')
     l4, = plt.plot(n_components, ari, label='ari')
-    plt.legend(handles=[l1, l2, l3, l4])
+    l5, = plt.plot(n_components, ami, label='ami')
+    plt.legend(handles=[l1, l2, l3, l4, l5])
     plt.show()
 
     print("------------------------------------------------------------------")
@@ -56,6 +60,7 @@ def myNMF(X):
     completeness = []
     vmeasure = []
     ari = []
+    ami = []
 
     for dimensionality in np.array(n_components):
         print("Desired dimensionality: %d" % dimensionality)
@@ -69,6 +74,7 @@ def myNMF(X):
         completeness.append(metrics.completeness_score(labels, kmNMF.labels_))
         vmeasure.append(metrics.v_measure_score(labels, kmNMF.labels_))
         ari.append(metrics.adjusted_rand_score(labels, kmNMF.labels_))
+        ami.append(metrics.adjusted_mutual_info_score(labels, kmNMF.labels_))
 
         print("Homogeneity: %0.3f" % metrics.homogeneity_score(labels, kmNMF.labels_))
         print("Completeness: %0.3f" % metrics.completeness_score(labels, kmNMF.labels_))
@@ -82,7 +88,8 @@ def myNMF(X):
     l2, = plt.plot(n_components, completeness, label='completeness')
     l3, = plt.plot(n_components, vmeasure, label='vmeasure')
     l4, = plt.plot(n_components, ari, label='ari')
-    plt.legend(handles=[l1, l2, l3, l4])
+    l5, = plt.plot(n_components, ami, label='ami')
+    plt.legend(handles=[l1, l2, l3, l4, l5])
     plt.show()
     print("------------------------------------------------------------------")
 
