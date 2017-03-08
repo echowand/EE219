@@ -2,12 +2,13 @@ from __future__ import print_function
 from sklearn.datasets import fetch_20newsgroups as f20
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.decomposition import TruncatedSVD, NMF
+from sklearn.cluster import KMeans
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import Normalizer
-from sklearn.cluster import KMeans
 from sklearn import metrics
 import numpy as np
 import matplotlib.pyplot as plt
+
 
 def mySVD(X):
     n_components = [200, 300, 500, 1000]
@@ -64,6 +65,7 @@ def myNMF(X):
 
     for dimensionality in np.array(n_components):
         print("Desired dimensionality: %d" % dimensionality)
+
         nmf = NMF(n_components=dimensionality, init='nndsvd', random_state=0, alpha=.1, l1_ratio=0)
         Y = nmf.fit_transform(X)
         kmNMF = KMeans(n_clusters=true_k, init='k-means++', max_iter=100, n_init=1)
@@ -103,7 +105,21 @@ vectorizer = TfidfVectorizer(max_df=0.5, min_df=2, stop_words='english')
 dataset = f20(subset='all', categories=categories, shuffle=True, random_state=42,
               remove=('headers', 'footers', 'quotes'))
 labels = dataset.target
-true_k = 20
+
+# map labels
+dict = {1 : 0, 2 : 0, 3 : 0, 4 : 0, 5 : 0,
+        7 : 1, 8 : 1, 9 : 1, 10 : 1,
+        11 : 2, 12 : 2, 13 : 2, 14 : 2,
+        6 : 3,
+        16 : 4, 17 : 4, 18 : 4,
+        0 : 5, 15 : 5, 19 : 5}
+
+i = 0
+for label in labels:
+    labels[i] = dict[labels[i]]
+    i = i+1
+
+true_k = 6
 X = vectorizer.fit_transform(dataset.data)
 samples, features = X.shape
 
