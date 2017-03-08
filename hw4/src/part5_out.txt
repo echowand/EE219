@@ -1,0 +1,60 @@
+Desired dimensionality: 2
+Homogeneity: 0.286
+Completeness: 0.208
+Adjusted Rand-Index: 0.091
+Adjusted_Mutual_Info_Score: 0.205
+
+Desired dimensionality: 5
+Homogeneity: 0.362
+Completeness: 0.276
+Adjusted Rand-Index: 0.135
+Adjusted_Mutual_Info_Score: 0.274
+
+Desired dimensionality: 10
+Homogeneity: 0.374
+Completeness: 0.296
+Adjusted Rand-Index: 0.148
+Adjusted_Mutual_Info_Score: 0.294
+
+Desired dimensionality: 50
+Homogeneity: 0.366
+Completeness: 0.304
+Adjusted Rand-Index: 0.105
+Adjusted_Mutual_Info_Score: 0.301
+
+Desired dimensionality: 100
+Homogeneity: 0.358
+Completeness: 0.324
+Adjusted Rand-Index: 0.091
+Adjusted_Mutual_Info_Score: 0.321
+
+------------------------------------------------------------------
+Desired dimensionality: 2
+Homogeneity: 0.258
+Completeness: 0.187
+Adjusted Rand-Index: 0.078
+Adjusted_Mutual_Info_Score: 0.184
+
+Desired dimensionality: 5
+Homogeneity: 0.341
+Completeness: 0.256
+Adjusted Rand-Index: 0.121
+Adjusted_Mutual_Info_Score: 0.253
+
+Desired dimensionality: 10
+Homogeneity: 0.365
+Completeness: 0.292
+Adjusted Rand-Index: 0.146
+Adjusted_Mutual_Info_Score: 0.290
+
+Desired dimensionality: 50
+Homogeneity: 0.319
+Completeness: 0.304
+Adjusted Rand-Index: 0.070
+Adjusted_Mutual_Info_Score: 0.301
+
+Desired dimensionality: 100
+Homogeneity: 0.279
+Completeness: 0.258
+Adjusted Rand-Index: 0.073
+Adjusted_Mutual_Info_Score: 0.255
