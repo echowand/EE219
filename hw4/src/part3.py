@@ -7,6 +7,7 @@ from sklearn.preprocessing import Normalizer
 from sklearn.cluster import KMeans
 from sklearn import metrics
 import numpy as np
+import matplotlib.pyplot as plt
 
 categories = ['comp.graphics', 'comp.os.ms-windows.misc', 'comp.sys.ibm.pc.hardware', 'comp.sys.mac.hardware',
               'rec.autos', 'rec.motorcycles', 'rec.sport.baseball', 'rec.sport.hockey']
@@ -35,7 +36,12 @@ print()
 # Vectorizer results are normalized, which makes KMeans behave as
 # spherical k-means for better results. Since LSA/SVD results are
 # not normalized, we have to redo the normalization.
-n_components = [2, 5, 10, 50, 100, 200, 500]
+n_components = [2, 5, 10, 50, 100]
+homogeneity = []
+completeness = []
+vmeasure = []
+ari = []
+ami = []
 for dimensionality in np.array(n_components):
     print("Desired dimensionality: %d" % dimensionality)
     svd = TruncatedSVD(dimensionality)
@@ -51,6 +57,12 @@ for dimensionality in np.array(n_components):
     # print("Clustering sparse data with %s" % km)
     km.fit(Y)
 
+    homogeneity.append(metrics.homogeneity_score(labels, km.labels_))
+    completeness.append(metrics.completeness_score(labels, km.labels_))
+    vmeasure.append(metrics.v_measure_score(labels, km.labels_))
+    ari.append(metrics.adjusted_rand_score(labels, km.labels_))
+    ami.append(metrics.adjusted_mutual_info_score(labels, km.labels_))
+
     print("Homogeneity: %0.3f" % metrics.homogeneity_score(labels, km.labels_))
     print("Completeness: %0.3f" % metrics.completeness_score(labels, km.labels_))
     print("V-measure: %0.3f" % metrics.v_measure_score(labels, km.labels_))
@@ -59,8 +71,16 @@ for dimensionality in np.array(n_components):
     print("Silhouette Coefficient: %0.3f" % metrics.silhouette_score(Y, km.labels_, sample_size=1000))
     print()
 
-print ("------------------------------------------------------------------")
+plt.plot(n_components, homogeneity)
+plt.plot(n_components, completeness)
+plt.plot(n_components, vmeasure)
+plt.plot(n_components, ari)
+plt.plot(n_components, ami)
+plt.show()
 
+print("------------------------------------------------------------------")
+
+'''
 ##### reduce feature dimension: NMF
 for dimensionality in np.array(n_components):
     print("Desired dimensionality: %d" % dimensionality)
@@ -77,6 +97,7 @@ for dimensionality in np.array(n_components):
     print("Adjusted Mutual Info: %.3f" % metrics.adjusted_mutual_info_score(labels, km.labels_))
     print("Silhouette Coefficient: %0.3f" % metrics.silhouette_score(Y, km.labels_, sample_size=1000))
     print()
+'''
 
 '''
 print("Top terms per cluster:")
