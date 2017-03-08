@@ -1,0 +1,65 @@
+Reduce feature dimension by setting min_df = 2
+Number of samples: 7882, number of features: 27626
+
+Desired dimensionality: 2
+Explained variance of the SVD step: 0%
+Homogeneity: 0.177
+Completeness: 0.530
+V-measure: 0.265
+Adjusted Rand-Index: 0.158
+Adjusted Mutual Info: 0.176
+Silhouette Coefficient: 0.601
+
+Desired dimensionality: 5
+Explained variance of the SVD step: 1%
+Homogeneity: 0.177
+Completeness: 0.531
+V-measure: 0.266
+Adjusted Rand-Index: 0.159
+Adjusted Mutual Info: 0.177
+Silhouette Coefficient: 0.290
+
+Desired dimensionality: 10
+Explained variance of the SVD step: 2%
+Homogeneity: 0.164
+Completeness: 0.492
+V-measure: 0.246
+Adjusted Rand-Index: 0.149
+Adjusted Mutual Info: 0.164
+Silhouette Coefficient: 0.184
+
+Desired dimensionality: 50
+Explained variance of the SVD step: 8%
+Homogeneity: 0.165
+Completeness: 0.497
+V-measure: 0.248
+Adjusted Rand-Index: 0.147
+Adjusted Mutual Info: 0.165
+Silhouette Coefficient: 0.053
+
+Desired dimensionality: 100
+Explained variance of the SVD step: 13%
+Homogeneity: 0.170
+Completeness: 0.515
+V-measure: 0.256
+Adjusted Rand-Index: 0.148
+Adjusted Mutual Info: 0.170
+Silhouette Coefficient: 0.031
+
+Desired dimensionality: 200
+Explained variance of the SVD step: 20%
+Homogeneity: 0.182
+Completeness: 0.550
+V-measure: 0.274
+Adjusted Rand-Index: 0.158
+Adjusted Mutual Info: 0.182
+Silhouette Coefficient: 0.021
+
+Desired dimensionality: 500
+Explained variance of the SVD step: 35%
+Homogeneity: 0.150
+Completeness: 0.654
+V-measure: 0.244
+Adjusted Rand-Index: 0.073
+Adjusted Mutual Info: 0.149
+Silhouette Coefficient: 0.016
