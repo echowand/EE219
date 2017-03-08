@@ -1,3 +1,4 @@
+/Library/Frameworks/Python.framework/Versions/2.7/bin/python2.7 /Users/guanqunmao/UCLA/EE219/hw4/src/part3.py
 Reduce feature dimension by setting min_df = 2
 Number of samples: 7882, number of features: 27626
 
@@ -7,116 +8,297 @@ Homogeneity: 0.176
 Completeness: 0.528
 V-measure: 0.264
 Adjusted Rand-Index: 0.157
-Adjusted Mutual Info: 0.176
-Silhouette Coefficient: 0.592
+Silhouette Coefficient: 0.595
 
 Desired dimensionality: 5
 Explained variance of the SVD step: 1%
-Homogeneity: 0.178
-Completeness: 0.535
-V-measure: 0.267
-Adjusted Rand-Index: 0.160
-Adjusted Mutual Info: 0.178
-Silhouette Coefficient: 0.295
+Homogeneity: 0.185
+Completeness: 0.558
+V-measure: 0.278
+Adjusted Rand-Index: 0.162
+Silhouette Coefficient: 0.303
 
 Desired dimensionality: 10
 Explained variance of the SVD step: 2%
-Homogeneity: 0.163
-Completeness: 0.491
-V-measure: 0.245
-Adjusted Rand-Index: 0.148
-Adjusted Mutual Info: 0.163
-Silhouette Coefficient: 0.183
+Homogeneity: 0.165
+Completeness: 0.497
+V-measure: 0.248
+Adjusted Rand-Index: 0.150
+Silhouette Coefficient: 0.192
 
 Desired dimensionality: 50
 Explained variance of the SVD step: 8%
-Homogeneity: 0.166
-Completeness: 0.501
-V-measure: 0.249
-Adjusted Rand-Index: 0.148
-Adjusted Mutual Info: 0.166
+Homogeneity: 0.162
+Completeness: 0.489
+V-measure: 0.243
+Adjusted Rand-Index: 0.144
 Silhouette Coefficient: 0.051
 
 Desired dimensionality: 100
 Explained variance of the SVD step: 13%
-Homogeneity: 0.167
-Completeness: 0.506
-V-measure: 0.251
-Adjusted Rand-Index: 0.145
-Adjusted Mutual Info: 0.167
+Homogeneity: 0.172
+Completeness: 0.521
+V-measure: 0.259
+Adjusted Rand-Index: 0.151
 Silhouette Coefficient: 0.032
 
 Desired dimensionality: 200
 Explained variance of the SVD step: 20%
-Homogeneity: 0.178
-Completeness: 0.537
-V-measure: 0.267
-Adjusted Rand-Index: 0.154
-Adjusted Mutual Info: 0.178
-Silhouette Coefficient: 0.022
+Homogeneity: 0.182
+Completeness: 0.550
+V-measure: 0.274
+Adjusted Rand-Index: 0.159
+Silhouette Coefficient: 0.020
 
 Desired dimensionality: 500
 Explained variance of the SVD step: 35%
-Homogeneity: 0.190
-Completeness: 0.570
-V-measure: 0.285
-Adjusted Rand-Index: 0.167
-Adjusted Mutual Info: 0.190
-Silhouette Coefficient: 0.011
+Homogeneity: 0.192
+Completeness: 0.578
+V-measure: 0.289
+Adjusted Rand-Index: 0.169
+Silhouette Coefficient: 0.013
 
-------------------------------------------------------------------
+Desired dimensionality: 1000
+Explained variance of the SVD step: 52%
+Homogeneity: 0.159
+Completeness: 0.501
+V-measure: 0.241
+Adjusted Rand-Index: 0.124
+Silhouette Coefficient: 0.010
+
+/Library/Frameworks/Python.framework/Versions/2.7/bin/python2.7 /Users/guanqunmao/UCLA/EE219/hw4/src/part3.py
+Reduce feature dimension by setting min_df = 2
+Number of samples: 7882, number of features: 27626
+
+Desired dimensionality: 260
+Explained variance of the SVD step: 24%
+Homogeneity: 0.191
+Completeness: 0.577
+V-measure: 0.287
+Adjusted Rand-Index: 0.165
+Silhouette Coefficient: 0.018
+
+Desired dimensionality: 280
+Explained variance of the SVD step: 25%
+Homogeneity: 0.193
+Completeness: 0.584
+V-measure: 0.290
+Adjusted Rand-Index: 0.166
+Silhouette Coefficient: 0.017
+
+Desired dimensionality: 300
+Explained variance of the SVD step: 26%
+Homogeneity: 0.157
+Completeness: 0.669
+V-measure: 0.255
+Adjusted Rand-Index: 0.081
+Silhouette Coefficient: 0.021
+
+Desired dimensionality: 320
+Explained variance of the SVD step: 27%
+Homogeneity: 0.193
+Completeness: 0.585
+V-measure: 0.291
+Adjusted Rand-Index: 0.167
+Silhouette Coefficient: 0.015
+
+Desired dimensionality: 340
+Explained variance of the SVD step: 28%
+Homogeneity: 0.188
+Completeness: 0.570
+V-measure: 0.283
+Adjusted Rand-Index: 0.160
+Silhouette Coefficient: 0.016
+
+Desired dimensionality: 360
+Explained variance of the SVD step: 29%
+Homogeneity: 0.184
+Completeness: 0.555
+V-measure: 0.277
+Adjusted Rand-Index: 0.162
+Silhouette Coefficient: 0.013
+
+================================================================================================
+
+Reduce feature dimension by setting min_df = 2
+Number of samples: 7882, number of features: 27626
+
 Desired dimensionality: 2
-Homogeneity: 0.143
-Completeness: 0.437
-V-measure: 0.215
-Adjusted Rand-Index: 0.123
-Adjusted Mutual Info: 0.143
-Silhouette Coefficient: 0.389
+Homogeneity: 0.156
+Completeness: 0.492
+V-measure: 0.237
+Adjusted Rand-Index: 0.121
+Silhouette Coefficient: 0.480
 
 Desired dimensionality: 5
-Homogeneity: 0.056
-Completeness: 0.395
-V-measure: 0.098
-Adjusted Rand-Index: 0.015
-Adjusted Mutual Info: 0.056
-Silhouette Coefficient: 0.463
+Homogeneity: 0.123
+Completeness: 0.603
+V-measure: 0.205
+Adjusted Rand-Index: 0.051
+Silhouette Coefficient: 0.290
 
 Desired dimensionality: 10
-Homogeneity: 0.051
-Completeness: 0.206
-V-measure: 0.082
-Adjusted Rand-Index: 0.024
-Adjusted Mutual Info: 0.051
-Silhouette Coefficient: 0.422
+Homogeneity: 0.044
+Completeness: 0.283
+V-measure: 0.076
+Adjusted Rand-Index: 0.012
+Silhouette Coefficient: 0.416
 
 Desired dimensionality: 50
-Homogeneity: 0.006
-Completeness: 0.346
-V-measure: 0.012
-Adjusted Rand-Index: 0.000
-Adjusted Mutual Info: 0.006
-Silhouette Coefficient: 0.481
+Homogeneity: 0.142
+Completeness: 0.463
+V-measure: 0.218
+Adjusted Rand-Index: 0.102
+Silhouette Coefficient: 0.147
 
 Desired dimensionality: 100
-Homogeneity: 0.097
-Completeness: 0.374
-V-measure: 0.154
-Adjusted Rand-Index: 0.049
-Adjusted Mutual Info: 0.097
-Silhouette Coefficient: 0.248
+Homogeneity: 0.007
+Completeness: 0.332
+V-measure: 0.013
+Adjusted Rand-Index: 0.000
+Silhouette Coefficient: 0.280
 
 Desired dimensionality: 200
-Homogeneity: 0.074
-Completeness: 0.463
-V-measure: 0.128
-Adjusted Rand-Index: 0.021
-Adjusted Mutual Info: 0.074
-Silhouette Coefficient: 0.254
+Homogeneity: 0.146
+Completeness: 0.471
+V-measure: 0.222
+Adjusted Rand-Index: 0.106
+Silhouette Coefficient: 0.082
 
-Desired dimensionality: 500
-Homogeneity: 0.080
-Completeness: 0.344
-V-measure: 0.130
+--------------------------------
+/Library/Frameworks/Python.framework/Versions/2.7/bin/python2.7 /Users/guanqunmao/UCLA/EE219/hw4/src/part3.py
+Reduce feature dimension by setting min_df = 2
+Number of samples: 7882, number of features: 27626
+
+Desired dimensionality: 2
+Homogeneity: 0.155
+Completeness: 0.490
+V-measure: 0.235
+Adjusted Rand-Index: 0.119
+Silhouette Coefficient: 0.457
+
+Desired dimensionality: 3
+Homogeneity: 0.029
+Completeness: 0.298
+V-measure: 0.053
+Adjusted Rand-Index: 0.005
+Silhouette Coefficient: 0.610
+
+Desired dimensionality: 4
+Homogeneity: 0.149
+Completeness: 0.467
+V-measure: 0.226
+Adjusted Rand-Index: 0.120
+Silhouette Coefficient: 0.365
+
+Desired dimensionality: 5
+Homogeneity: 0.027
+Completeness: 0.287
+V-measure: 0.049
+Adjusted Rand-Index: 0.004
+Silhouette Coefficient: 0.491
+
+Desired dimensionality: 6
+Homogeneity: 0.130
+Completeness: 0.425
+V-measure: 0.200
+Adjusted Rand-Index: 0.095
+Silhouette Coefficient: 0.293
+
+Desired dimensionality: 7
+Homogeneity: 0.124
+Completeness: 0.604
+V-measure: 0.205
+Adjusted Rand-Index: 0.051
+Silhouette Coefficient: 0.263
+
+Desired dimensionality: 8
+Homogeneity: 0.130
+Completeness: 0.422
+V-measure: 0.198
+Adjusted Rand-Index: 0.095
+Silhouette Coefficient: 0.281
+
+Desired dimensionality: 9
+Homogeneity: 0.026
+Completeness: 0.284
+V-measure: 0.048
+Adjusted Rand-Index: 0.004
+Silhouette Coefficient: 0.540
+
+Desired dimensionality: 10
+Homogeneity: 0.147
+Completeness: 0.467
+V-measure: 0.223
+Adjusted Rand-Index: 0.113
+Silhouette Coefficient: 0.261
+
+Desired dimensionality: 11
+Homogeneity: 0.139
+Completeness: 0.447
+V-measure: 0.212
+Adjusted Rand-Index: 0.104
+Silhouette Coefficient: 0.238
+
+Desired dimensionality: 12
+Homogeneity: 0.026
+Completeness: 0.279
+V-measure: 0.048
+Adjusted Rand-Index: 0.004
+Silhouette Coefficient: 0.430
+
+Desired dimensionality: 13
+Homogeneity: 0.044
+Completeness: 0.286
+V-measure: 0.077
+Adjusted Rand-Index: 0.012
+Silhouette Coefficient: 0.371
+
+Desired dimensionality: 14
+Homogeneity: 0.045
+Completeness: 0.288
+V-measure: 0.077
+Adjusted Rand-Index: 0.012
+Silhouette Coefficient: 0.335
+
+Desired dimensionality: 15
+Homogeneity: 0.149
+Completeness: 0.472
+V-measure: 0.226
+Adjusted Rand-Index: 0.116
+Silhouette Coefficient: 0.195
+
+Desired dimensionality: 16
+Homogeneity: 0.113
+Completeness: 0.453
+V-measure: 0.181
+Adjusted Rand-Index: 0.068
+Silhouette Coefficient: -0.001
+
+Desired dimensionality: 17
+Homogeneity: 0.082
+Completeness: 0.369
+V-measure: 0.135
 Adjusted Rand-Index: 0.035
-Adjusted Mutual Info: 0.080
-Silhouette Coefficient: 0.312
+Silhouette Coefficient: 0.274
+
+Desired dimensionality: 18
+Homogeneity: 0.025
+Completeness: 0.275
+V-measure: 0.046
+Adjusted Rand-Index: 0.004
+Silhouette Coefficient: 0.397
+
+Desired dimensionality: 19
+Homogeneity: 0.142
+Completeness: 0.455
+V-measure: 0.217
+Adjusted Rand-Index: 0.108
+Silhouette Coefficient: 0.197
+
+Desired dimensionality: 20
+Homogeneity: 0.134
+Completeness: 0.440
+V-measure: 0.206
+Adjusted Rand-Index: 0.096
+Silhouette Coefficient: 0.198
