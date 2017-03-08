@@ -1,0 +1,122 @@
+Reduce feature dimension by setting min_df = 2
+Number of samples: 7882, number of features: 27626
+
+Desired dimensionality: 2
+Explained variance of the SVD step: 0%
+Homogeneity: 0.176
+Completeness: 0.528
+V-measure: 0.264
+Adjusted Rand-Index: 0.157
+Adjusted Mutual Info: 0.176
+Silhouette Coefficient: 0.592
+
+Desired dimensionality: 5
+Explained variance of the SVD step: 1%
+Homogeneity: 0.178
+Completeness: 0.535
+V-measure: 0.267
+Adjusted Rand-Index: 0.160
+Adjusted Mutual Info: 0.178
+Silhouette Coefficient: 0.295
+
+Desired dimensionality: 10
+Explained variance of the SVD step: 2%
+Homogeneity: 0.163
+Completeness: 0.491
+V-measure: 0.245
+Adjusted Rand-Index: 0.148
+Adjusted Mutual Info: 0.163
+Silhouette Coefficient: 0.183
+
+Desired dimensionality: 50
+Explained variance of the SVD step: 8%
+Homogeneity: 0.166
+Completeness: 0.501
+V-measure: 0.249
+Adjusted Rand-Index: 0.148
+Adjusted Mutual Info: 0.166
+Silhouette Coefficient: 0.051
+
+Desired dimensionality: 100
+Explained variance of the SVD step: 13%
+Homogeneity: 0.167
+Completeness: 0.506
+V-measure: 0.251
+Adjusted Rand-Index: 0.145
+Adjusted Mutual Info: 0.167
+Silhouette Coefficient: 0.032
+
+Desired dimensionality: 200
+Explained variance of the SVD step: 20%
+Homogeneity: 0.178
+Completeness: 0.537
+V-measure: 0.267
+Adjusted Rand-Index: 0.154
+Adjusted Mutual Info: 0.178
+Silhouette Coefficient: 0.022
+
+Desired dimensionality: 500
+Explained variance of the SVD step: 35%
+Homogeneity: 0.190
+Completeness: 0.570
+V-measure: 0.285
+Adjusted Rand-Index: 0.167
+Adjusted Mutual Info: 0.190
+Silhouette Coefficient: 0.011
+
+------------------------------------------------------------------
+Desired dimensionality: 2
+Homogeneity: 0.143
+Completeness: 0.437
+V-measure: 0.215
+Adjusted Rand-Index: 0.123
+Adjusted Mutual Info: 0.143
+Silhouette Coefficient: 0.389
+
+Desired dimensionality: 5
+Homogeneity: 0.056
+Completeness: 0.395
+V-measure: 0.098
+Adjusted Rand-Index: 0.015
+Adjusted Mutual Info: 0.056
+Silhouette Coefficient: 0.463
+
+Desired dimensionality: 10
+Homogeneity: 0.051
+Completeness: 0.206
+V-measure: 0.082
+Adjusted Rand-Index: 0.024
+Adjusted Mutual Info: 0.051
+Silhouette Coefficient: 0.422
+
+Desired dimensionality: 50
+Homogeneity: 0.006
+Completeness: 0.346
+V-measure: 0.012
+Adjusted Rand-Index: 0.000
+Adjusted Mutual Info: 0.006
+Silhouette Coefficient: 0.481
+
+Desired dimensionality: 100
+Homogeneity: 0.097
+Completeness: 0.374
+V-measure: 0.154
+Adjusted Rand-Index: 0.049
+Adjusted Mutual Info: 0.097
+Silhouette Coefficient: 0.248
+
+Desired dimensionality: 200
+Homogeneity: 0.074
+Completeness: 0.463
+V-measure: 0.128
+Adjusted Rand-Index: 0.021
+Adjusted Mutual Info: 0.074
+Silhouette Coefficient: 0.254
+
+Desired dimensionality: 500
+Homogeneity: 0.080
+Completeness: 0.344
+V-measure: 0.130
+Adjusted Rand-Index: 0.035
+Adjusted Mutual Info: 0.080
+Silhouette Coefficient: 0.312
