@@ -1,7 +1,7 @@
 from __future__ import print_function
 from sklearn.datasets import fetch_20newsgroups as f20
 from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.decomposition import TruncatedSVD
+from sklearn.decomposition import TruncatedSVD, NMF
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import Normalizer
 from sklearn.cluster import KMeans
@@ -35,7 +35,6 @@ print()
 # Vectorizer results are normalized, which makes KMeans behave as
 # spherical k-means for better results. Since LSA/SVD results are
 # not normalized, we have to redo the normalization.
-
 n_components = [2, 5, 10, 50, 100, 200, 500]
 for dimensionality in np.array(n_components):
     print("Desired dimensionality: %d" % dimensionality)
@@ -60,7 +59,24 @@ for dimensionality in np.array(n_components):
     print("Silhouette Coefficient: %0.3f" % metrics.silhouette_score(Y, km.labels_, sample_size=1000))
     print()
 
+print ("------------------------------------------------------------------")
 
+##### reduce feature dimension: NMF
+for dimensionality in np.array(n_components):
+    print("Desired dimensionality: %d" % dimensionality)
+    nmf = NMF(n_components=dimensionality, random_state=0, alpha=.1, l1_ratio=.5)
+    Y = nmf.fit_transform(X)
+    km = KMeans(n_clusters=true_k, init='k-means++', max_iter=100, n_init=1)
+
+    km.fit(Y)
+
+    print("Homogeneity: %0.3f" % metrics.homogeneity_score(labels, km.labels_))
+    print("Completeness: %0.3f" % metrics.completeness_score(labels, km.labels_))
+    print("V-measure: %0.3f" % metrics.v_measure_score(labels, km.labels_))
+    print("Adjusted Rand-Index: %.3f" % metrics.adjusted_rand_score(labels, km.labels_))
+    print("Adjusted Mutual Info: %.3f" % metrics.adjusted_mutual_info_score(labels, km.labels_))
+    print("Silhouette Coefficient: %0.3f" % metrics.silhouette_score(Y, km.labels_, sample_size=1000))
+    print()
 
 '''
 print("Top terms per cluster:")
