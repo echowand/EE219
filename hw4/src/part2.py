@@ -1,117 +1,70 @@
-from __future__ import print_function
-from sklearn.datasets import fetch_20newsgroups as f20
-from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.feature_extraction.text import TfidfTransformer
+import numpy as np
 from sklearn.feature_extraction import text
-from sklearn import metrics
-from nltk import SnowballStemmer
-from nltk.tokenize import RegexpTokenizer
+from sklearn.datasets import fetch_20newsgroups
+from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.cluster import KMeans
+from sklearn.metrics import confusion_matrix
+from nltk.stem.lancaster import LancasterStemmer
+from nltk.tokenize.regexp import RegexpTokenizer
+from sklearn.metrics.cluster import homogeneity_score
+from sklearn.metrics.cluster import completeness_score
+from sklearn.metrics.cluster import adjusted_rand_score
+from sklearn.metrics.cluster import normalized_mutual_info_score
+from nltk.stem.snowball import SnowballStemmer
 
-# Get stop words
-def get_stop_words():
-    stop_words = [text.ENGLISH_STOP_WORDS]
-    with open('NLTK_StopWords.txt', 'r') as file:
-        lists = file.readlines()
+class1 = ['comp.graphics', 'comp.os.ms-windows.misc', 'comp.sys.ibm.pc.hardware', 'comp.sys.mac.hardware'];
+class2 = ['rec.autos', 'rec.motorcycles', 'rec.sport.baseball', 'rec.sport.hockey'];
+class1_train = fetch_20newsgroups(subset = 'train', categories = class1, shuffle=True, random_state=42, remove=('headers','footers','quotes'));
+class2_train = fetch_20newsgroups(subset = 'train', categories = class2, shuffle=True, random_state=42, remove=('headers','footers','quotes'));
 
-    for i in range(len(lists)):
-        lists[i] = lists[i].rstrip()
+stop_words = text.ENGLISH_STOP_WORDS
 
-    NLTK_stop_words = lists
+stemmer = SnowballStemmer("english")
 
-    return stop_words, NLTK_stop_words
+class Tokenizer(object):
+    def __init__(self):
+        self.tok = RegexpTokenizer(r'\w+')
+        self.stemmer = LancasterStemmer()
 
-# Proprocess data
-def preprocess(sentence, stop_words, NLTK_stop_words):
-    sentence = sentence.lower()
-    tokenizer = RegexpTokenizer(r'\w+')
-    stemmer = SnowballStemmer("english")
+    def __call__(self, doc):
+        return [self.stemmer.stem(token) for token in self.tok.tokenize(doc)]
 
-    tokens = tokenizer.tokenize(sentence)
-    filter1 = [w for w in tokens if not w in NLTK_stop_words and w not in stop_words and len(w) is not 1]
-    filter2 = [stemmer.stem(plural) for plural in filter1]
-    filter3 = [i for i in filter2 if not i.isdigit()]
-    return " ".join(filter3)
+total_train = fetch_20newsgroups(subset='train', shuffle=True, random_state=42, categories = class1+class2, remove=('headers','footers','quotes'))
+total_test = fetch_20newsgroups(subset='test', shuffle=True, random_state=42, categories = class1+class2, remove=('headers','footers','quotes'))
 
-# Calculate TFIDF
-def TFIDF(categories, train_test, stop_words, NLTK_stop_words):
-    # Get the data
-    all_data = f20(subset=train_test,categories=categories, remove=('headers','footers','quotes'))
-    # Save size of the data
-    size, = all_data.filenames.shape
-    # Preprocess all documents
-    for item in range(0, size):
-        sentence = all_data.data[item]
-        all_data.data[item] = preprocess(sentence, stop_words, NLTK_stop_words)
+# normalize features
+n_features = 10000
+TFxIDF = TfidfVectorizer(analyzer='word',tokenizer=Tokenizer(), stop_words=stop_words,token_pattern='[a-zA-Z]{2,}', norm = 'l2', max_df=0.95, min_df=2, max_features=n_features)
+TFxIDF_train = TFxIDF.fit_transform(total_train.data)
+TFxIDF_test  = TFxIDF.transform(total_test.data)
 
-    # Transfer processed data to a TDM
-    count_vectorizer = CountVectorizer()
-    X_train_number = count_vectorizer.fit_transform(all_data.data)
+tfidf_feature_names = TFxIDF.get_feature_names()
 
-    # Calculate TFIDF for every term in the document
-    tf_transformer = TfidfTransformer(use_idf=True).fit(X_train_number)
-    X_train_tfidf = tf_transformer.transform(X_train_number)
-    docs, terms = X_train_tfidf.shape
-    print("TFIDF")
-    print("Number of terms: ", terms)
-    print("Number of documents: ", docs)
-    return all_data, X_train_tfidf, X_train_number, count_vectorizer
+kmeans = KMeans(n_clusters=2, max_iter = 1000, random_state=42).fit(TFxIDF_train)
 
-# Load data
-def load_data():
-    categories = ['comp.graphics', 'comp.os.ms-windows.misc', 'comp.sys.ibm.pc.hardware', 'comp.sys.mac.hardware',
-                  'rec.autos', 'rec.motorcycles', 'rec.sport.baseball', 'rec.sport.hockey']
+# Group the subclasses into 2 superclasses
+test_target_group = [ int(x / 4) for x in total_test.target]
 
-    stop_words, NLTK_stop_words = get_stop_words()
-    data, X_tfidf, X_counts, count_vectorizer = TFIDF(categories, 'all', stop_words, NLTK_stop_words)
-    return data, X_tfidf
+kmeans_predict = kmeans.predict(TFxIDF_test)
 
-# Label data
-def label_data(Y_data):
-    labels = []
-    for y in Y_data:
-        labels.append(0 if (y <= 3) else 1)
-    return labels
+if sum(abs(kmeans_predict - test_target_group)) > len(kmeans_predict) / 2:
+    i = 0
+    for candidate in kmeans_predict:
 
-# Benchmark K means
-def print_k_means(estimator, init_name, data, labels):
-    estimator.fit(data)
-    print('% 9s   %.4f   %.4f   %.4f   %.4f'
-          % (init_name,
-             metrics.homogeneity_score(labels, estimator.labels_),
-             metrics.completeness_score(labels, estimator.labels_),
-             metrics.adjusted_rand_score(labels, estimator.labels_),
-             metrics.adjusted_mutual_info_score(labels, estimator.labels_),
-             ))
+        if candidate == 1:
+            kmeans_predict[i] = 0
+        elif candidate == 0:
+            kmeans_predict[i] = 1
+        i = i + 1
 
-def p2():
-    data, X_tfidf = load_data()
-    number_of_samples, number_of_features = X_tfidf.shape
-    number_of_digits = 2
-    labels = label_data(data.target)
+class_names = ['Computer Tech', 'Recreation']
 
-    print("no.digits: %d, \t no.samples %d, \t no.features %d"
-	      % (number_of_digits, number_of_samples, number_of_features))
-    print('% 9s' % 'init'
-                   '        homogeneity    completeness     ARS    AMI')
-    print_k_means(KMeans(init='k-means++', n_clusters=number_of_digits,
-                         n_init=10, max_iter=200, random_state=42, tol=1e-5),
-                  init_name="k-means++", data=X_tfidf, labels=labels)
+# Compute confusion matrix
+cnf_matrix = confusion_matrix(test_target_group, kmeans_predict)
+np.set_printoptions(precision=2)
 
-    print_k_means(KMeans(init='random', n_clusters=number_of_digits,
-                         n_init=10, max_iter=200, random_state=42, tol=1e-5),
-                  init_name="random", data=X_tfidf, labels=labels)
-
-
-p2()
-
-# ____________________________________________________________________________________________________
-# TFIDF Matrix Created
-# Final number of terms:  67764
-# Final number of documents:  7882
-# ____________________________________________________________________________________________________
-# no.digits: 2, 	 no.samples 7882, 	 no.features 67764
-# init        homogeneity    completeness     ARS    AMI
-# k-means++   0.421   0.455   0.440   0.421
-#    random   0.438   0.469   0.462   0.438
-# ____________________________________________________________________________________________________
+print cnf_matrix
+print homogeneity_score(test_target_group, kmeans_predict)
+print completeness_score(test_target_group, kmeans_predict)
+print adjusted_rand_score(test_target_group, kmeans_predict)
+print normalized_mutual_info_score(test_target_group, kmeans_predict)
