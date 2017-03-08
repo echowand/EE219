@@ -18,7 +18,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.preprocessing import FunctionTransformer
 
-k_value = 5
+k_value = 100
 n_iter = 5
 m_iter = 200
 random_state = 42
