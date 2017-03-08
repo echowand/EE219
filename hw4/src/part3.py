@@ -60,8 +60,8 @@ def LSA(X):
 
 ##### reduce feature dimension: NMF
 def myNMF(X):
-    n_components = range(2, 21, 1)
-    # n_components = [500, 600, 700]
+    # n_components = range(2, 21, 1)
+    n_components = [600, 300]
     homogeneity = []
     completeness = []
     vmeasure = []
@@ -70,7 +70,8 @@ def myNMF(X):
         print("Desired dimensionality: %d" % dimensionality)
         nmf = NMF(n_components=dimensionality, init='nndsvd', random_state=0, alpha=.1, l1_ratio=0)
         Y = nmf.fit_transform(X)
-        km = KMeans(n_clusters=true_k, init='k-means++', max_iter=100, n_init=1)
+        # km = KMeans(n_clusters=true_k, init='k-means++', max_iter=100, n_init=1)
+        km = KMeans(n_clusters=2, max_iter=1000, random_state=42).fit(X)
 
         km.fit(Y)
 
@@ -113,6 +114,8 @@ true_k = 2
 ##### reduce feature dimension: min_df=2
 print("Reduce feature dimension by setting min_df = 2")
 vectorizer = TfidfVectorizer(max_df=0.5, min_df=2, stop_words='english')
+#vectorizer = TfidfVectorizer(max_df=0.5, min_df=2, stop_words='english', max_features=10000)
+
 X = vectorizer.fit_transform(dataset.data)
 samples, features = X.shape
 print("Number of samples: %d, number of features: %d" % (samples, features))
