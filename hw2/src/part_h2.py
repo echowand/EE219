@@ -10,6 +10,10 @@ from sklearn.metrics import roc_curve
 from sklearn.naive_bayes import GaussianNB
 from sklearn.naive_bayes import BernoulliNB
 from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import confusion_matrix
+from sklearn.metrics import precision_recall_curve
+from sklearn.metrics import auc
+
 
 english_stemmer = nltk.stem.SnowballStemmer('english')
 
@@ -80,12 +84,25 @@ def classifier(svm_train_data, svm_train_tag, svm_test_data, svm_test_tag):
     gnb_fpr, gnb_tpr, gnb_thr = roc_curve(svm_test_tag, test_score[:, 1])
 
     c1 = 1
-    lr1 = LogisticRegression('l1', False, C=c1, warm_start=True, solver='liblinear')
+    #lr1 = LogisticRegression('l1', False, C=c1, warm_start=True, solver='liblinear')
+    lr1 = LogisticRegression(C=10)
     lr1.fit(svm_train_data, svm_train_tag)
     test_score = lr1.predict_proba(svm_test_data)
+    lr1_predict=lr1.predict(svm_test_data)
+    precision, recall, thresholds = precision_recall_curve(svm_test_tag,lr1_predict)
     lr1_fpr, lr1_tpr, lr1_thr = roc_curve(svm_test_tag, test_score[:, 1])
+    score=lr1.score(svm_test_data,svm_test_tag)
+    lr1_auc = auc(lr1_fpr, lr1_tpr)
+
+    print "confusion matrix:","\n",confusion_matrix(svm_test_tag, lr1_predict)
+    print "score=",score
+    print "precision=",precision[1]
+    print "recall=",recall[1]
+    print "auc=",lr1_auc
+    print "\n"
 
     plot(fpr_hard, tpr_hard, fpr_soft, tpr_soft, bnb_fpr, bnb_tpr, gnb_fpr, gnb_tpr, lr1_fpr, lr1_tpr)
+
 
 def plot(fpr_hard, tpr_hard, fpr_soft, tpr_soft, bnb_fpr, bnb_tpr, gnb_fpr, gnb_tpr, lr1_fpr, lr1_tpr):
     plt.figure()
