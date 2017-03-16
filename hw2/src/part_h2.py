@@ -79,8 +79,9 @@ def classifier(svm_train_data, svm_train_tag, svm_test_data, svm_test_tag):
     test_score = bnb.predict_proba(svm_test_data)
     gnb_fpr, gnb_tpr, gnb_thr = roc_curve(svm_test_tag, test_score[:, 1])
 
-    c1 = 1
-    lr1 = LogisticRegression('l1', False, C=c1, warm_start=True, solver='liblinear')
+    c1 = 10
+    #lr1 = LogisticRegression('l1', False, C=c1, warm_start=True, solver='liblinear')
+    lr1 = LogisticRegression(C=c1);
     lr1.fit(svm_train_data, svm_train_tag)
     test_score = lr1.predict_proba(svm_test_data)
     lr1_fpr, lr1_tpr, lr1_thr = roc_curve(svm_test_tag, test_score[:, 1])
