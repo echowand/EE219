@@ -7,7 +7,19 @@ from nltk.tokenize.regexp import RegexpTokenizer
 from sklearn.datasets import fetch_20newsgroups as f20
 from sklearn.feature_extraction import text
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
+from sklearn.feature_extraction.text import TfidfVectorizer
+from nltk.stem.snowball import SnowballStemmer
+from sklearn.feature_extraction.text import CountVectorizer
+from nltk import word_tokenize
+from nltk.stem.porter import PorterStemmer
+import re
+import nltk
+import string
+from nltk.tag import pos_tag
 
+
+stop_words = text.ENGLISH_STOP_WORDS
+stemmer = SnowballStemmer("english")
 
 def plot_by_categories(cat_count, train):
     x = np.arange(0, cat_count + 1, 1)
@@ -34,11 +46,12 @@ def plot_by_categories(cat_count, train):
 
 class Tokenizer(object):
     def __init__(self):
-        self.tok = RegexpTokenizer(r'\b([a-zA-Z]+)\b')
+        self.tok = RegexpTokenizer(r'\w+')
         self.stemmer = LancasterStemmer()
 
     def __call__(self, doc):
         return [self.stemmer.stem(token) for token in self.tok.tokenize(doc)]
+
 
 #Task A
 def A():
@@ -65,6 +78,24 @@ def B():
     tfidf = tfidf_fit.toarray()
     print 'number of terms: ' + str(len(tfidf[0]))
 
+
+def tokenizer_fun(text):
+    new_text = re.sub(r'[^A-Za-z]', " ", text)
+    new_text = re.sub("[,.-:/()?{}*$#&]"," ",new_text)  # remove all symbols
+    new_text = "".join([ch for ch in new_text if ch not in string.punctuation])  # remove all punctuation
+    new_text = "".join(ch for ch in new_text if ord(ch) < 128)  # remove all non-ascii characters
+    new_text = new_text.lower() # convert to lowercase
+    tokens =[word for sent in nltk.sent_tokenize(new_text) for word in nltk.word_tokenize(sent)]
+    new_tokens = []
+    for token in tokens:
+        if re.search('[a-zA-Z]{2,}', token):
+            new_tokens.append(token)
+    stem = [stemmer.stem(t) for t in new_tokens]
+    tagged_sent = pos_tag(stem)
+    new_stem = [word for word,pos in tagged_sent if pos == 'NN'] # remove all non-noun words
+    return new_stem
+
+
 #Task C
 def C():
     categories = ['comp.sys.ibm.pc.hardware', 'comp.sys.mac.hardware', 'misc.forsale', 'soc.religion.christian']
@@ -77,9 +108,9 @@ def C():
 
     # get the count vector
     stopwords = text.ENGLISH_STOP_WORDS
-    vectorizer = CountVectorizer(tokenizer=Tokenizer(),
+    vectorizer = CountVectorizer(tokenizer=tokenizer_fun(),
                                  stop_words=stopwords,
-                                 min_df=1)
+                                 min_df=2)
     vector = vectorizer.fit_transform(datalist)
     count = vector.toarray()
     # get the if and icf
