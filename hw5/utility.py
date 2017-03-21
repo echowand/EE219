@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 from nltk.corpus import stopwords
 from sklearn.cross_validation import KFold
 
-logger.basicConfig(level=logger.INFO, format='> %(message)s')
+logger.basicConfig(level=logger.INFO, format='%(asctime)-15s - %(message)s')
 
 extra_features = ['Number of Tweets', 'Number of Retweets', 'Number of Followers', 'Max Number of Followers',
                   'Impression Count', 'Favourite Count', 'Ranking Score', 'Hour of Day', 'Number of Users tweeting',

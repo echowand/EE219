@@ -2,7 +2,7 @@ import json
 from utility import *
 import logging as logger
 
-logger.basicConfig(level=logger.INFO, format='> %(message)s')
+logger.basicConfig(level=logger.INFO, format='%(asctime)-15s - %(message)s')
 
 hash_tags = ['gopatriots', 'gohawks', 'nfl', 'patriots', 'sb49', 'superbowl']
 

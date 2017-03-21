@@ -5,7 +5,7 @@ import logging as logger
 import statsmodels.api as sm
 from datetime import datetime
 
-logger.basicConfig(level=logger.INFO, format='> %(message)s')
+logger.basicConfig(level=logger.INFO, format='%(asctime)-15s - %(message)s')
 
 # hash tags
 hash_tags = ['gohawks', 'gopatriots', 'nfl', 'patriots', 'sb49', 'superbowl']

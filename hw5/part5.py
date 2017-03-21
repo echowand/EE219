@@ -1,8 +1,6 @@
 import json
 from utility import *
-import logging as logger
 
-logger.basicConfig(level=logger.INFO, format='> %(message)s')
 
 hash_tags = ['gopatriots', 'gohawks', 'nfl', 'patriots', 'sb49', 'superbowl']
 test_samples = ['sample1_period1', 'sample2_period2', 'sample3_period3', 'sample4_period1', 'sample5_period1', 'sample6_period2', 'sample7_period3', 'sample8_period1', 'sample9_period2', 'sample10_period3']
