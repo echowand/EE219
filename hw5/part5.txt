@@ -1,0 +1,192 @@
+gopatriots
+> Extracting training features from tweets
+> Testing File sample1_period1
+> Predicted # of Tweets for 7th Hour: 290.547238813
+> Error Value for Model: 6236.18342885
+> Testing File sample2_period2
+> Predicted # of Tweets for 7th Hour: 2383960.8263
+> Error Value for Model: 65147.539712
+> Testing File sample3_period3
+> Predicted # of Tweets for 7th Hour: 34608.2486631
+> Error Value for Model: 12521.9067869
+> Testing File sample4_period1
+> Predicted # of Tweets for 7th Hour: 1602.20968681
+> Error Value for Model: 2009.14725538
+> Testing File sample5_period1
+> Predicted # of Tweets for 7th Hour: 393.140347339
+> Error Value for Model: 1068.28857353
+> Testing File sample6_period2
+> Predicted # of Tweets for 7th Hour: -21993.4691141
+> Error Value for Model: 41893.0575943
+> Testing File sample7_period3
+> Predicted # of Tweets for 7th Hour: -87.6430194729
+> Error Value for Model: 20.4826294819
+> Testing File sample8_period1
+> Predicted # of Tweets for 7th Hour: -109.984042497
+> Error Value for Model: -169.517269228
+> Testing File sample9_period2
+> Predicted # of Tweets for 7th Hour: 57966.7637008
+> Error Value for Model: 5662.8707226
+> Testing File sample10_period3
+> Predicted # of Tweets for 7th Hour: 58.7063487681
+> Error Value for Model: -62.0153088237
+gohawks
+> Extracting training features from tweets
+> Testing File sample1_period1
+> Predicted # of Tweets for 7th Hour: 365.351800096
+> Error Value for Model: -906.855537639
+> Testing File sample2_period2
+> Predicted # of Tweets for 7th Hour: -858140.983553
+> Error Value for Model: -44044.4103934
+> Testing File sample3_period3
+> Predicted # of Tweets for 7th Hour: -1814.66229845
+> Error Value for Model: -2438.64439319
+> Testing File sample4_period1
+> Predicted # of Tweets for 7th Hour: 93.0412206213
+> Error Value for Model: -251.698288295
+> Testing File sample5_period1
+> Predicted # of Tweets for 7th Hour: 409.403244295
+> Error Value for Model: -160.546415819
+> Testing File sample6_period2
+> Predicted # of Tweets for 7th Hour: -3672.59481742
+> Error Value for Model: -66014.5610668
+> Testing File sample7_period3
+> Predicted # of Tweets for 7th Hour: -32.5831353284
+> Error Value for Model: 112.094980887
+> Testing File sample8_period1
+> Predicted # of Tweets for 7th Hour: 295.12043583
+> Error Value for Model: 259.666350106
+> Testing File sample9_period2
+> Predicted # of Tweets for 7th Hour: -20145.2250068
+> Error Value for Model: 206.202375525
+> Testing File sample10_period3
+> Predicted # of Tweets for 7th Hour: -31.6957891454
+> Error Value for Model: 182.056323014
+nfl
+> Extracting training features from tweets
+> Testing File sample1_period1
+> Predicted # of Tweets for 7th Hour: 174.141993643
+> Error Value for Model: 129.545044916
+> Testing File sample2_period2
+> Predicted # of Tweets for 7th Hour: 2178909.08261
+> Error Value for Model: -21215.8829973
+> Testing File sample3_period3
+> Predicted # of Tweets for 7th Hour: -1567.13104741
+> Error Value for Model: 6.43857105153
+> Testing File sample4_period1
+> Predicted # of Tweets for 7th Hour: 284.860440598
+> Error Value for Model: 44.5797949556
+> Testing File sample5_period1
+> Predicted # of Tweets for 7th Hour: 280.906303176
+> Error Value for Model: -62.0137801544
+> Testing File sample6_period2
+> Predicted # of Tweets for 7th Hour: 886782.04694
+> Error Value for Model: -21335.45255
+> Testing File sample7_period3
+> Predicted # of Tweets for 7th Hour: 102.665249065
+> Error Value for Model: 37.8586235324
+> Testing File sample8_period1
+> Predicted # of Tweets for 7th Hour: 105.748577616
+> Error Value for Model: 53.5461857779
+> Testing File sample9_period2
+> Predicted # of Tweets for 7th Hour: 50099.6838592
+> Error Value for Model: -313.054038126
+> Testing File sample10_period3
+> Predicted # of Tweets for 7th Hour: -17.3106902154
+> Error Value for Model: 40.482559091
+patriots
+> Extracting training features from tweets
+> Testing File sample1_period1
+> Predicted # of Tweets for 7th Hour: 242.045484002
+> Error Value for Model: 457.380682694
+> Testing File sample2_period2
+> Predicted # of Tweets for 7th Hour: 173637.896099
+> Error Value for Model: -27652.163585
+> Testing File sample3_period3
+> Predicted # of Tweets for 7th Hour: 6571.39569339
+> Error Value for Model: 419.337850173
+> Testing File sample4_period1
+> Predicted # of Tweets for 7th Hour: 219.402690772
+> Error Value for Model: 208.221513802
+> Testing File sample5_period1
+> Predicted # of Tweets for 7th Hour: 231.576744421
+> Error Value for Model: -151.649324586
+> Testing File sample6_period2
+> Predicted # of Tweets for 7th Hour: -91159.9062761
+> Error Value for Model: -79491.2143878
+> Testing File sample7_period3
+> Predicted # of Tweets for 7th Hour: -50.5818731978
+> Error Value for Model: -3.25312028769
+> Testing File sample8_period1
+> Predicted # of Tweets for 7th Hour: 151.477534788
+> Error Value for Model: 113.245578644
+> Testing File sample9_period2
+> Predicted # of Tweets for 7th Hour: -26168.7791243
+> Error Value for Model: 775.655902321
+> Testing File sample10_period3
+> Predicted # of Tweets for 7th Hour: 932.511267582
+> Error Value for Model: 66.8736007459
+sb49
+> Extracting training features from tweets
+> Testing File sample1_period1
+> Predicted # of Tweets for 7th Hour: 111.779702732
+> Error Value for Model: -47.4860951203
+> Testing File sample2_period2
+> Predicted # of Tweets for 7th Hour: -1486543.40811
+> Error Value for Model: -25900.4350653
+> Testing File sample3_period3
+> Predicted # of Tweets for 7th Hour: 1488.88569158
+> Error Value for Model: -355.571120821
+> Testing File sample4_period1
+> Predicted # of Tweets for 7th Hour: 143.832425435
+> Error Value for Model: -56.5622237465
+> Testing File sample5_period1
+> Predicted # of Tweets for 7th Hour: 172.105282545
+> Error Value for Model: -123.134895124
+> Testing File sample6_period2
+> Predicted # of Tweets for 7th Hour: -87872.1061525
+> Error Value for Model: -36239.2340286
+> Testing File sample7_period3
+> Predicted # of Tweets for 7th Hour: 197.338955324
+> Error Value for Model: -19.7289717463
+> Testing File sample8_period1
+> Predicted # of Tweets for 7th Hour: 40.0190262946
+> Error Value for Model: -3.22849941357
+> Testing File sample9_period2
+> Predicted # of Tweets for 7th Hour: -28214.7526228
+> Error Value for Model: -563.428742697
+> Testing File sample10_period3
+> Predicted # of Tweets for 7th Hour: 1939.84535726
+> Error Value for Model: -14.3008699581
+superbowl
+> Extracting training features from tweets
+> Testing File sample1_period1
+> Predicted # of Tweets for 7th Hour: 15.3848727298
+> Error Value for Model: -10.3304284482
+> Testing File sample2_period2
+> Predicted # of Tweets for 7th Hour: -1283467.82453
+> Error Value for Model: -31468.2354007
+> Testing File sample3_period3
+> Predicted # of Tweets for 7th Hour: 1240.60660288
+> Error Value for Model: -697.503453603
+> Testing File sample4_period1
+> Predicted # of Tweets for 7th Hour: 50.764836546
+> Error Value for Model: -292.16328697
+> Testing File sample5_period1
+> Predicted # of Tweets for 7th Hour: 37.7006374376
+> Error Value for Model: -375.025804851
+> Testing File sample6_period2
+> Predicted # of Tweets for 7th Hour: -374372.274777
+> Error Value for Model: -35882.9124866
+> Testing File sample7_period3
+> Predicted # of Tweets for 7th Hour: 207.131864066
+> Error Value for Model: -22.7329561591
+> Testing File sample8_period1
+> Predicted # of Tweets for 7th Hour: 81.6244356427
+> Error Value for Model: 5.44906037597
+> Testing File sample9_period2
+> Predicted # of Tweets for 7th Hour: -25818.8441148
+> Error Value for Model: -2252.29923822
+> Testing File sample10_period3
+> Predicted # of Tweets for 7th Hour: 1482.71125146
+> Error Value for Model: -5.09863958131
