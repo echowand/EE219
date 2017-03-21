@@ -1,0 +1,56 @@
+41567
+Marshawn Marshawn Marshawn! #SuperBowl
+(37410, 46498)
+(4157, 46498)
+Classification Report of SVM
+
+             precision    recall  f1-score   support
+
+          0       0.71      0.92      0.80      2501
+          1       0.78      0.42      0.55      1656
+
+avg / total       0.74      0.72      0.70      4157
+
+Confusion Matrix of SVM
+
+[[2307  194]
+ [ 953  703]]
+Accuracy of SVM
+
+0.724079865287
+
+
+Classification Report of Naive Bayes
+
+             precision    recall  f1-score   support
+
+          0       0.72      0.69      0.71      2501
+          1       0.56      0.60      0.58      1656
+
+avg / total       0.66      0.65      0.65      4157
+
+Confusion Matrix of Naive Bayes
+
+[[1728  773]
+ [ 670  986]]
+Accuracy of Naive Bayes
+
+0.652874669233
+
+
+Classification Report of Logistic Regression
+
+             precision    recall  f1-score   support
+
+          0       0.71      0.95      0.81      2501
+          1       0.84      0.43      0.57      1656
+
+avg / total       0.77      0.74      0.72      4157
+
+Confusion Matrix of Logistic Regression
+
+[[2368  133]
+ [ 948  708]]
+Accuracy of Logistic Regression
+
+0.739956699543
