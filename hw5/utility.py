@@ -5,7 +5,6 @@ import numpy as np
 from nltk import bigrams
 import logging as logger
 import statsmodels.api as sm
-from datetime import datetime
 from collections import Counter
 from nltk.corpus import stopwords
 from sklearn.cross_validation import KFold
